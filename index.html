@@ -19,15 +19,18 @@
     }
 	
 	.header-top {
-  width: 100%; /* WAJIB supaya full lebar card */
-  display: block; /* memastikan full row */
   background: linear-gradient(90deg, #2b76ff 0%, #ffd24a 100%);
-  border-radius: 22px 22px 0 0;
+  border-radius: 22px 22px 0 0; 
   padding: 30px 10px;
   text-align: center;
   color: white;
-}
 
+  margin-left: -24px;   /* tambahkan */
+  margin-right: -24px;  /* tambahkan */
+  margin-top: -24px;    /* tambahkan */
+  width: calc(100% + 48px); /* tambahkan agar tetap pas */
+}
+	  
 .header-top h1 {
   color: #fff;
   font-size: 28px;          /* besar seperti screenshot */
@@ -50,11 +53,7 @@
   border-radius: 22px;
   background: white;
   box-shadow: 0 10px 30px rgba(2,6,23,0.12);
-
-  /* UPDATE */
-  padding: 0;          /* Hapus padding agar header full width */
-  overflow: hidden;    /* Agar radius tetap rapi */
-  
+  padding: 24px;  /* KEMBALIKAN */
   border: 1px solid rgba(17,24,39,0.05);
 }
 
@@ -358,6 +357,7 @@ document.getElementById('sumDate').innerText =
 
 </body>
 </html>
+
 
 
 
