@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Fresin Member App</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(30,58,138,0.06) 0%, rgba(16,185,129,0.03) 12%, rgba(245,158,11,0.08) 40%, rgba(245,158,11,0.12) 70%), 
+                  linear-gradient(180deg, #F6F9F6 0%, #F7F3E6 100%);
+    }
+	
+	.header-top {
+  background: linear-gradient(90deg, #2b76ff 0%, #ffd24a 100%);
+  border-radius: 22px 22px 0 0;
+  padding: 30px 10px 30px 10px; /* Tinggi & lebar seperti screenshot */
+  text-align: center;
+  color: white;
+}
+
+.header-top h1 {
+  color: #fff;
+  font-size: 32px;          /* besar seperti screenshot */
+  font-weight: 600;
+  margin-bottom: 2px;       /* jarak kecil ke subjudul */
+}
+
+.header-top p {
+  color: rgba(255,255,255,0.95);
+  font-size: 20px;          /* lebih besar dari sebelumnya */
+  font-weight: 500;
+  margin: 0;
+}
+
+
+
+    .card {
+      max-width: 380px;
+      margin: 28px auto;
+      border-radius: 22px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+      padding: 24px;
+      border: 1px solid rgba(17,24,39,0.05);
+    }
+
+    .input-base {
+      width: 100%;
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 16px 14px 46px;
+      border: 1.5px solid rgba(59,130,246,0.15);
+      box-shadow: 0 4px 12px rgba(59,130,246,0.05);
+      outline: none;
+      font-size: 14px;
+      transition: .15s ease;
+    }
+    .input-base:focus {
+      border-color: rgba(59,130,246,0.35);
+      box-shadow: 0 8px 28px rgba(59,130,246,0.18);
+      transform: translateY(-1px);
+    }
+
+    .label-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #0f172a;
+      font-size: 13px;
+    }
+
+    .upload-box {
+      border: 2px dashed rgba(59,130,246,0.22);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(59,130,246,0.02), rgba(249,250,251,0.01));
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      font-weight: 800;
+      color: white;
+      font-size: 15px;
+      background: linear-gradient(90deg,#2b76ff 0%, #ffd24a 100%);
+      box-shadow: 0 12px 30px rgba(13,71,161,0.18);
+      border: none;
+    }
+
+    /* SUMMARY (LOCKED) */
+    #summaryBox {
+      width: min(95vw, 430px);
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      border-radius: 22px;
+      background: #FFF7E8 !important;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      padding-bottom: 28px;
+}
+
+    .sum-photo-wrapper {
+      width: 72%;
+      max-width: 300px;
+      aspect-ratio: 4/5;
+      margin: 0 auto;
+      border-radius: 16px;
+      padding: 6px;
+      border: 4px solid #FFD54A;
+      background: white;
+    }
+    #sumPhoto { width:100%; height:100%; object-fit:cover; border-radius:14px; }
+
+  </style>
+</head>
+
+<body class="h-full">
+
+  <div class="min-h-full flex items-start justify-center px-4 py-8">
+    <div class="w-full">
+
+      <!-- FORM -->
+      <div id="registration-form" class="card">
+
+        <div class="header-top">
+  <h1>Fresin Indonesia</h1>
+  <p>MEMBER REGISTRATION</p>
+</div>
+
+
+
+        <form id="memberForm" class="space-y-4 mt-8">
+
+          <!-- Nama -->
+          <div>
+            <div class="label-row"><span>👤</span><label>Nama Lengkap</label></div>
+            <input type="text" id="nama" class="input-base" required placeholder="Masukkan nama lengkap">
+          </div>
+
+          <!-- WhatsApp -->
+          <div>
+            <div class="label-row"><span>📱</span><label>Nomor WhatsApp</label></div>
+            <input type="tel" id="whatsapp" class="input-base" required placeholder="08xxxxxxxxxx">
+            <p class="text-xs text-gray-500 mt-1">Pastikan nomor whatsapp yang aktif ya</p>
+          </div>
+
+          <!-- Foto -->
+          <div>
+            <div class="label-row"><span>📸</span><label>Foto Profil</label></div>
+
+            <input type="file" id="fileInput" accept="image/*" class="hidden">
+
+            <button type="button" onclick="document.getElementById('fileInput').click()" class="w-full" style="background:transparent;border:none;">
+              <div class="upload-box" id="uploadBox">
+                <div id="uploadIcon" class="text-4xl">📷</div>
+                <div id="uploadText" class="font-semibold mt-1">Pilih Foto</div>
+                <p class="text-xs text-gray-500 mt-1">*Upload foto dengan wajah terlihat jelas</p>
+              </div>
+            </button>
+          </div>
+
+          <!-- Kode -->
+          <div>
+            <div class="label-row"><span>💳</span><label>Kode Validasi</label></div>
+            <input type="password" id="kodePembayaran" class="input-base" required placeholder="••••••" autocomplete="off" onpaste="return false">
+            <p class="text-xs text-gray-500 mt-1">Terisi otomatis, jika kode masih kosong dapatkan dari Kasir</p>
+          </div>
+
+          <button id="submitBtn" type="submit" class="btn-primary">
+            <span>🚀</span> <span id="submitText">DAFTAR SEKARANG</span>
+          </button>
+
+        </form>
+
+      </div>
+
+      <!-- SUMMARY (TIDAK BOLEH DIUBAH) -->
+      <div id="summaryBox" class="mt-6 hidden">
+
+        <div class="text-center mb-4">
+          <div class="w-16 h-16 bg-green-500 mx-auto rounded-full flex items-center justify-center text-white text-3xl shadow-md">✓</div>
+          <h2 class="mt-3 text-2xl font-extrabold text-gray-800">Pendaftaran Berhasil</h2>
+          <p class="text-gray-600">Selamat anda telah menjadi member Fresin</p>
+        </div>
+
+        <div class="flex justify-center mb-4">
+          <div class="sum-photo-wrapper">
+            <img id="sumPhoto">
+          </div>
+        </div>
+
+        <div class="space-y-2 px-4">
+          <div class="bg-white rounded-xl py-2 text-center shadow-sm">
+            <p class="text-xs text-gray-500">NAMA MEMBER</p>
+            <p id="sumName" class="font-bold text-gray-800"></p>
+          </div>
+          <div class="bg-white rounded-xl py-2 text-center shadow-sm">
+            <p class="text-xs text-gray-500">WHATSAPP</p>
+            <p id="sumWa" class="font-bold text-gray-800"></p>
+          </div>
+          <div class="bg-white rounded-xl py-2 text-center shadow-sm mb-3">
+            <p class="text-xs text-gray-500">TANGGAL DAFTAR</p>
+            <p id="sumDate" class="font-bold text-gray-800"></p>
+          </div>
+        </div>
+
+        <div class="bg-orange-50 border-l-4 border-orange-400 p-3 rounded-r-xl mx-4">
+          <div class="flex space-x-2">
+            <span class="text-orange-500 text-xl">📱</span>
+            <p class="text-sm text-gray-700 leading-tight">
+              <strong>Penting!</strong><br>
+              Screenshoot laman ini dan tunjukkan pada kasir saat bertransaksi.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- IMAGE COMPRESS -->
+  <script>
+    function compressImage(file, maxSize = 1280, quality = 0.8) {
+      return new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onload = event => {
+          const img = new Image();
+          img.onload = () => {
+            let w = img.width, h = img.height;
+            if (w > h && w > maxSize) { h *= maxSize / w; w = maxSize; }
+            else if (h > maxSize) { w *= maxSize / h; h = maxSize; }
+
+            const c = document.createElement('canvas');
+            c.width = w; c.height = h;
+            c.getContext('2d').drawImage(img, 0, 0, w, h);
+            resolve(c.toDataURL("image/jpeg", quality));
+          };
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    let compressedDataUrl = "";
+  </script>
+
+  <!-- FILE UPLOAD EVENT -->
+  <script>
+    document.getElementById('fileInput').addEventListener('change', async e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      compressedDataUrl = await compressImage(file, 900, 0.75);
+
+      document.getElementById('uploadIcon').innerText = "✓";
+      document.getElementById('uploadIcon').classList.add("text-green-600");
+      document.getElementById('uploadText').innerText = "Foto sudah dipilih";
+    });
+  </script>
+
+  <!-- ENDPOINT GAS -->
+  <script>
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbzdwoTAA0Rj2hOzACDwDSzrwsjgYUPkGqYq045097udogbxv8ex7rOkDNZJPwWH2h8h/exec"; 
+  </script>
+
+  <!-- SUBMIT FORM -->
+  <script>
+    document.getElementById('memberForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const nama = document.getElementById('nama').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+      const kode = document.getElementById('kodePembayaran').value;
+      const foto = compressedDataUrl;
+
+      if (!nama || !whatsapp || !kode || !foto) {
+        alert("Semua field wajib diisi.");
+        return;
+      }
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      document.getElementById('submitText').innerText = "Mendaftar...";
+
+      const formData = new FormData();
+      formData.append("action", "simpanData");
+      formData.append("nama", nama);
+      formData.append("whatsapp", whatsapp);
+      formData.append("kode", kode);
+      formData.append("fotoBase64", foto);
+
+      fetch(ENDPOINT, {
+        method: "POST",
+        body: formData
+      })
+      .then(r => r.json())
+      .then(res => {
+
+        btn.disabled = false;
+        document.getElementById('submitText').innerText = "DAFTAR SEKARANG";
+
+        if (!res.success) {
+          alert(res.message);
+          return;
+        }
+
+        document.getElementById('sumPhoto').src = foto;
+        document.getElementById('sumName').innerText = nama;
+        document.getElementById('sumWa').innerText = whatsapp;
+        const today = new Date();
+document.getElementById('sumDate').innerText = 
+    today.toLocaleDateString('id-ID', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+
+        document.getElementById('registration-form').style.display = "none";
+        document.getElementById('summaryBox').classList.remove('hidden');
+
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Gagal menghubungi server.");
+      });
+
+    });
+  </script>
+
+  <!-- AUTOFILL + LOCK -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const kodeURL = params.get("kode");
+
+    if (kodeURL) {
+      document.getElementById("kodePembayaran").value = kodeURL;
+      document.getElementById("kodePembayaran").readOnly = true;
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  </script>
+
+</body>
+</html>
