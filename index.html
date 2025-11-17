@@ -110,12 +110,17 @@
       width: min(95vw, 430px);
       margin-left: auto;
       margin-right: auto;
-      margin-top: 20px;
+      margin-top: 30px;
       margin-bottom: 40px;
       border-radius: 22px;
       background: #FFF7E8 !important;
       box-shadow: 0 4px 10px rgba(0,0,0,0.06);
       padding-bottom: 28px;
+}
+
+	  .summary-field {
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
     .sum-photo-wrapper {
@@ -209,15 +214,15 @@
         </div>
 
         <div class="space-y-2 px-4">
-          <div class="bg-white rounded-xl py-2 text-center shadow-sm">
+          <div class="bg-white rounded-xl py-2 text-center shadow-sm summary-field">
             <p class="text-xs text-gray-500">NAMA MEMBER</p>
             <p id="sumName" class="font-bold text-gray-800"></p>
           </div>
-          <div class="bg-white rounded-xl py-2 text-center shadow-sm">
+          <div class="bg-white rounded-xl py-2 text-center shadow-sm summary-field">
             <p class="text-xs text-gray-500">WHATSAPP</p>
             <p id="sumWa" class="font-bold text-gray-800"></p>
           </div>
-          <div class="bg-white rounded-xl py-2 text-center shadow-sm mb-3">
+          <div class="bg-white rounded-xl py-2 text-center shadow-sm summary-field">
             <p class="text-xs text-gray-500">TANGGAL DAFTAR</p>
             <p id="sumDate" class="font-bold text-gray-800"></p>
           </div>
@@ -357,6 +362,7 @@ document.getElementById('sumDate').innerText =
 
 </body>
 </html>
+
 
 
 
