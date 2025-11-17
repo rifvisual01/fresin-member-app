@@ -117,6 +117,13 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.06);
       padding-bottom: 28px;
 }
+.summary-warning {
+  background: #E6F9EC;         /* hijau muda */
+  border-left: 4px solid #34C759;  /* hijau iOS style */
+  padding: 12px;
+  border-radius: 12px;
+  margin: 20px 20px 10px 20px; /* kiri-kanan lebih kecil */
+}
 
 	  .summary-field {
   margin-left: 30px;
@@ -228,7 +235,7 @@
           </div>
         </div>
 
-        <div class="bg-orange-50 border-l-4 border-orange-400 p-3 rounded-r-xl mx-4">
+        <div class="summary-warning">
           <div class="flex space-x-2">
             <span class="text-orange-500 text-xl">📱</span>
             <p class="text-sm text-gray-700 leading-tight">
@@ -362,6 +369,7 @@ document.getElementById('sumDate').innerText =
 
 </body>
 </html>
+
 
 
 
