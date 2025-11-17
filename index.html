@@ -19,9 +19,11 @@
     }
 	
 	.header-top {
+  width: 100%; /* WAJIB supaya full lebar card */
+  display: block; /* memastikan full row */
   background: linear-gradient(90deg, #2b76ff 0%, #ffd24a 100%);
-  border-radius: 15px 15px 0 0;
-  padding: 15px 0px 15px 0px; /* Tinggi & lebar seperti screenshot */
+  border-radius: 22px 22px 0 0;
+  padding: 30px 10px;
   text-align: center;
   color: white;
 }
@@ -43,14 +45,18 @@
 
 
     .card {
-      max-width: 380px;
-      margin: 28px auto;
-      border-radius: 22px;
-      background: white;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.12);
-      padding: 24px;
-      border: 1px solid rgba(17,24,39,0.05);
-    }
+  max-width: 380px;
+  margin: 28px auto;
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+
+  /* UPDATE */
+  padding: 0;          /* Hapus padding agar header full width */
+  overflow: hidden;    /* Agar radius tetap rapi */
+  
+  border: 1px solid rgba(17,24,39,0.05);
+}
 
     .input-base {
       width: 100%;
@@ -160,7 +166,7 @@
 
           <!-- Foto -->
           <div>
-            <div class="label-row"><span>📸</span><label>Foto Profil</label></div>
+            <div class="label-row"><span>📸</span><label>Foto Diri</label></div>
 
             <input type="file" id="fileInput" accept="image/*" class="hidden">
 
@@ -352,6 +358,7 @@ document.getElementById('sumDate').innerText =
 
 </body>
 </html>
+
 
 
 
