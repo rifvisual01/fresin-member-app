@@ -118,11 +118,17 @@
       padding-bottom: 28px;
 }
 .summary-warning {
-  background: #22C55E;         /* hijau muda */
-  border-left: 4px solid #34C759;  /* hijau iOS style */
-  padding: 12px;
-  border-radius: 12px;
-  margin: 20px 20px 10px 20px; /* kiri-kanan lebih kecil */
+  background: #34C759; /* hijau centang */
+  border-left: 4px solid #2EB94F; /* sedikit lebih gelap untuk aksen */
+  padding: 14px;
+  border-radius: 14px;
+  margin: 20px 20px 10px 20px;
+  color: white; /* semua teks jadi putih */
+}
+.summary-warning p,
+.summary-warning strong,
+.summary-warning span {
+  color: white !important; /* pastikan semua putih */
 }
 
 	  .summary-field {
@@ -369,6 +375,7 @@ document.getElementById('sumDate').innerText =
 
 </body>
 </html>
+
 
 
 
