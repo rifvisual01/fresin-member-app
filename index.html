@@ -200,7 +200,7 @@
           <div>
             <div class="label-row"><span>💳</span><label>Kode Validasi</label></div>
             <input type="password" id="kodePembayaran" class="input-base" required placeholder="••••••" autocomplete="off" onpaste="return false">
-            <p class="text-xs text-gray-500 mt-1">Kode khusus, automatis terisi jika buka link dari Kasir</p>
+            <p class="text-xs text-gray-500 mt-1">Otomatis terisi jika scan QR link dari Kasir</p>
           </div>
 
           <button id="submitBtn" type="submit" class="btn-primary">
@@ -255,6 +255,25 @@
 
     </div>
   </div>
+
+	<div id="modalError" class="fixed inset-0 bg-black bg-opacity-50 hidden 
+    flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl p-6 w-72 text-center shadow-xl">
+    <h2 class="text-lg font-bold text-gray-800 mb-2" id="modalErrorTitle">
+      Nomor WhatsApp sudah terdaftar
+    </h2>
+    <p class="text-sm text-gray-600 mb-5" id="modalErrorText">
+      Coba pakai nomor lain ya
+    </p>
+
+    <button id="modalErrorBtn"
+      class="w-full bg-green-500 text-white py-2 rounded-xl font-semibold 
+             active:scale-95 transition">
+      Oke
+    </button>
+  </div>
+</div>
+
 
   <!-- IMAGE COMPRESS -->
   <script>
@@ -337,9 +356,9 @@
         document.getElementById('submitText').innerText = "DAFTAR SEKARANG";
 
         if (!res.success) {
-          alert(res.message);
-          return;
-        }
+  showErrorModal("Nomor WhatsApp sudah terdaftar", "Coba pakai nomor lain ya");
+  return;
+}
 
         document.getElementById('sumPhoto').src = foto;
         document.getElementById('sumName').innerText = nama;
@@ -373,8 +392,21 @@ document.getElementById('sumDate').innerText =
     }
   </script>
 
+	<script>
+function showErrorModal(title, message) {
+  document.getElementById("modalErrorTitle").innerText = title;
+  document.getElementById("modalErrorText").innerText = message;
+  document.getElementById("modalError").classList.remove("hidden");
+}
+
+document.getElementById("modalErrorBtn").addEventListener("click", () => {
+  document.getElementById("modalError").classList.add("hidden");
+});
+</script>
+
 </body>
 </html>
+
 
 
 
