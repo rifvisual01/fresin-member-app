@@ -107,17 +107,16 @@
 
     /* SUMMARY (LOCKED) */
     #summaryBox {
-      width: min(95vw, 430px);
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 30px;
-      margin-bottom: 40px;
-      border-radius: 22px;
-      background: linear-gradient(90deg, #1E3A8A 0%, #2563EB 100%) !important;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-		padding-top: 22px;
-      padding-bottom: 22px;
+  width: min(92vw, 430px);   /* ✅ sedikit diperkecil agar tidak terasa geser */
+  margin: 30px auto 40px auto;  /* ✅ CENTER PAKSA KIRI-KANAN */
+  border-radius: 22px;
+  background: linear-gradient(90deg, #1E3A8A 0%, #2563EB 100%) !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  padding-top: 22px;
+  padding-bottom: 15px;
+  display: block;           /* ✅ pastikan bukan flex-item yang aneh */
 }
+
 .summary-warning {
   background: #FFD580;            /* ✅ oranye terang lembut */
   border-left: 4px solid #FFB703; /* ✅ oranye agak lebih gelap */
@@ -473,6 +472,7 @@ document.getElementById("modalErrorBtn").addEventListener("click", () => {
 
 </body>
 </html>
+
 
 
 
