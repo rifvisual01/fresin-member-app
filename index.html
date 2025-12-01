@@ -371,9 +371,33 @@ if (!foto) {
         document.getElementById('submitText').innerText = "DAFTAR SEKARANG";
 
         if (!res.success) {
-  showErrorModal("Nomor WhatsApp sudah terdaftar", "Coba pakai nomor lain ya");
+
+  // ✅ JIKA KODE VALIDASI SALAH
+  if (res.message && res.message.toLowerCase().includes("kode")) {
+    showErrorModal(
+      "Kode Validasi Salah",
+      "Dapatkan kode dari kasir setelah pembayaran"
+    );
+    return;
+  }
+
+  // ✅ JIKA NOMOR WHATSAPP SUDAH TERDAFTAR
+  if (res.message && res.message.toLowerCase().includes("whatsapp")) {
+    showErrorModal(
+      "Nomor WhatsApp sudah terdaftar",
+      "Coba pakai nomor lain ya"
+    );
+    return;
+  }
+
+  // ✅ FALLBACK JIKA ERROR LAIN
+  showErrorModal(
+    "Terjadi Kesalahan",
+    res.message || "Silakan coba lagi"
+  );
   return;
 }
+
 
         document.getElementById('sumPhoto').src = foto;
         document.getElementById('sumName').innerText = nama;
@@ -443,6 +467,7 @@ document.getElementById("modalErrorBtn").addEventListener("click", () => {
 
 </body>
 </html>
+
 
 
 
