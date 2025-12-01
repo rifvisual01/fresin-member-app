@@ -329,10 +329,25 @@
       const kode = document.getElementById('kodePembayaran').value;
       const foto = compressedDataUrl;
 
-      if (!nama || !whatsapp || !kode || !foto) {
-        alert("Semua field wajib diisi.");
-        return;
-      }
+      if (!nama) {
+  document.getElementById("nama").reportValidity();
+  return;
+}
+
+if (!whatsapp) {
+  document.getElementById("whatsapp").reportValidity();
+  return;
+}
+
+if (!kode) {
+  document.getElementById("kodePembayaran").reportValidity();
+  return;
+}
+
+if (!foto) {
+  document.getElementById("fileInput").click(); // arahkan user ke upload
+  return;
+}
 
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
@@ -404,8 +419,31 @@ document.getElementById("modalErrorBtn").addEventListener("click", () => {
 });
 </script>
 
+	<script>
+  const requiredFields = [
+    { id: "nama", msg: "Tolong isi kolom ini ya" },
+    { id: "whatsapp", msg: "Tolong isi kolom ini ya" },
+    { id: "kodePembayaran", msg: "Tolong isi kolom ini ya" }
+  ];
+
+  requiredFields.forEach(field => {
+    const input = document.getElementById(field.id);
+
+    input.setCustomValidity(field.msg);
+
+    input.addEventListener("input", () => {
+      if (input.value.trim() !== "") {
+        input.setCustomValidity("");
+      } else {
+        input.setCustomValidity(field.msg);
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
