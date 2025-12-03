@@ -450,14 +450,26 @@ document.getElementById("modalErrorBtn").addEventListener("click", () => {
 
 	<script>
 function openFotoModal() {
-  document.getElementById("modalFoto").classList.remove("hidden");
+  const modal = document.getElementById("modalFoto");
+  if (modal) {
+    modal.classList.remove("hidden");
+  }
 }
 
-document.getElementById("modalFotoBtn").addEventListener("click", () => {
-  document.getElementById("modalFoto").classList.add("hidden");
-  document.getElementById("fileInput").click(); // ✅ baru buka galeri
+document.addEventListener("DOMContentLoaded", () => {
+  const modalFotoBtn = document.getElementById("modalFotoBtn");
+  const modalFoto    = document.getElementById("modalFoto");
+  const fileInput   = document.getElementById("fileInput");
+
+  if (modalFotoBtn && modalFoto && fileInput) {
+    modalFotoBtn.addEventListener("click", () => {
+      modalFoto.classList.add("hidden");
+      fileInput.click(); // ✅ baru buka galeri
+    });
+  }
 });
 </script>
+
 
 	<script>
   const requiredFields = [
@@ -507,6 +519,7 @@ document.getElementById("modalFotoBtn").addEventListener("click", () => {
 
 </body>
 </html>
+
 
 
 
